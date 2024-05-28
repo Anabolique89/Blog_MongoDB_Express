@@ -2,20 +2,30 @@
 <div class="author">
     <h1 class="author__heading">Hi, I'm Nina.</h1>
     <p class="author__body">Multimedia Designer & Web Developer</p>
+    <!-- <p class="lorem">There are many variations of passages of Lorem Ipsum available, 
+        but the majority have suffered alteration in some form, by injected humour, 
+        or randomised words which don't look even slightly believable. 
+        If you are going to use a passage of Lorem Ipsum, you need to be sure
+         there isn't anything embarrassing hidden in the middle of text. </p> -->
 </div>
 
-<img src="/img/OceanOfBluemobile.jpg" alt="ocean of blue" class="hero-image">
+<img src="/img/25532108_1527986263944296_7759436507597627093_o.jpg" alt="ocean of blue" class="hero-image">
 </div>
 <section class="articles">
     <h2 class="articles__heading">Latest Posts</h2>
 
     <ul class="article-ul">
-        <li>
-            <a href="#">
-                <span>Post Title</span>
-                <span class="article-list__date">Date</span>
+        <% data.forEach(post => { %>
+          <li>
+            <a href="/post/<%= post._id %>">
+              <span><%= post.title %></span>
+              <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
             </a>
-        </li>
-    </ul>
-    <a href="#" class="pagination">&lt; View Older Posts</a>
+          </li>
+        <% }) %>
+      </ul>
+
+      <% if(nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+    <% } %>
 </section>

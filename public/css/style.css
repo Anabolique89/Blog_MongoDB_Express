@@ -87,9 +87,10 @@ img {
     }
   }
 /* Hero Section */
-.hero-image {
+.hero-image{
   /* max-height: 528px; */
-  width: auto;
+  width: 100%;
+  height: auto;
   filter: drop-shadow(0px 44px 34px rgba(0, 0, 0, 0.25));
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -121,7 +122,7 @@ img {
   grid-area: logo;
 }
 .header__logo img{
-    width: 30%;
+    width: 20%;
     height: auto;
 }
 
@@ -196,6 +197,11 @@ img {
   font-size: var(--font-size-md);
   margin: 5px 0 40px 0;
 }
+/* p.lorem {
+  font-size: var(--font-size-base);
+  width: 30rem;
+  margin: 20px 20px 30px 20px;
+} */
 
 
 /* Home Article List */
