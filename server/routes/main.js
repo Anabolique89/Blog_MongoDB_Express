@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
 
-//homepage route
-//GET
+//GET HOMEPAGE
 router.get("", async (req, res) => {
   try {
     const locals = {
-      title: "NodeJs Blog",
-      description: "Simple Blog created with Nodejs, Express & MongoDB.",
+      title: "NodeJs & MongoDB Art Blog",
+      description: "Mural Art Blog created with Nodejs, Express & MongoDB.",
     };
     //pagination
     let perPage = 10;
@@ -41,13 +40,16 @@ router.get("/post/:id", async (req, res) => {
     let slug = req.params.id;
 
     const data = await Post.findById({ _id: slug });
-    res.render("post", { data });
+    res.render("post", {
+      data,
+      currentRoute: `/post/${slug}`,
+    });
   } catch (error) {
     console.log(error);
   }
 });
 
-// POST
+// POST SEARCH
 
 router.post("/search", async (req, res) => {
   try {
@@ -67,10 +69,16 @@ router.post("/search", async (req, res) => {
 
     res.render("search", {
       data,
+      currentRoute: "/",
     });
   } catch (error) {
     console.log(error);
   }
+});
+
+//about route
+router.get("/about", (req, res) => {
+  res.render("about");
 });
 
 //Testing the data insertion
@@ -109,11 +117,6 @@ router.post("/search", async (req, res) => {
 // }
 
 // insertPostData();
-
-//about route
-router.get("/about", (req, res) => {
-  res.render("about");
-});
 
 //export router
 module.exports = router;
