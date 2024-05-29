@@ -343,6 +343,9 @@ img {
   color: var(--gray-light);
   padding: 15px;
 }
+#searchClose:hover{
+  cursor: pointer;
+}
 
 
 .pagination {
