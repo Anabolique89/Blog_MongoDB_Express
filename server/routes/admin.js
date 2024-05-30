@@ -181,6 +181,17 @@ router.put("/edit-post/:id", authMiddleware, async (req, res) => {
   }
 });
 
+//DELETE POST
+
+router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
+  try {
+    await Post.deleteOne({ _id: req.params.id });
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 //default admin login test
 
 // router.post("/admin", async (req, res) => {

@@ -81,7 +81,7 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
-//Testing the data insertion
+// Testing the data insertion
 
 // function insertPostData() {
 //   Post.insertMany([
@@ -108,6 +108,10 @@ router.get("/about", (req, res) => {
 //     {
 //       title: " Vienna offers a staggering amount of wall space to artists",
 //       body: "With over 20 walls, the city of Vienna offers a staggering amount of wall space to artists. Some of them are nicely located along the river Donau, and are pretty idyllic to paint. Well worth a visit!",
+//     },
+//     {
+//       title: "Wienerwand",
+//       body: "Im Rahmen des Projektes Wienerwand bietet die Stadt Wien jungen Künstler*innen aus der Graffitiszene legale Graffiti-Flächen an. Die Flächen werden durch die “Wiener Taube” als Wienerwand gekennzeichnet.",
 //     },
 //     {
 //       title: "Wienerwand",
