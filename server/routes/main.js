@@ -27,6 +27,7 @@ router.get("", async (req, res) => {
       data,
       current: page,
       nextPage: hasNextPage ? nextPage : null,
+      currentRoute: "/",
     });
   } catch (error) {
     console.log(error);
@@ -44,6 +45,7 @@ router.get("/post/:id", async (req, res) => {
       data,
       currentRoute: `/post/${slug}`,
     });
+    // res.status(200).json("POST successfully fetched");
   } catch (error) {
     console.log(error);
   }
@@ -78,7 +80,16 @@ router.post("/search", async (req, res) => {
 
 //about route
 router.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", {
+    currentRoute: "/about",
+  });
+});
+
+//contact route
+router.get("/contact", (req, res) => {
+  res.render("contact", {
+    currentRoute: "/contact",
+  });
 });
 
 // Testing the data insertion

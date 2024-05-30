@@ -2,7 +2,7 @@
 
 :root {
   --black: #1c1c1c;
-  --gray: #cdcccc;
+  --gray: #ffffff;
   --gray-light: #E4E4E4;
   --red: #b30000;
   --font-size-base: 1rem;
@@ -175,7 +175,7 @@ img {
 }
 
 .header__nav ul a.active {
-  color: #7E7E7E;
+  color: #ffffff;
 }
 
 .header__nav ul a:hover {

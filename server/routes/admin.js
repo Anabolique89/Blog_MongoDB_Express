@@ -58,8 +58,11 @@ router.get("/admin", async (req, res) => {
       title: "Admin",
       description: "Admin Login & Command",
     };
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
 
     res.render("admin/index", { locals, layout: adminLayout });
+    // res.status(200).json(user);
   } catch (error) {
     console.log(error);
   }
@@ -121,6 +124,7 @@ router.get("/add-post", authMiddleware, async (req, res) => {
       locals,
       layout: adminLayout,
     });
+    // res.status(200).json(data);
   } catch (error) {
     console.log(error);
   }
@@ -128,7 +132,7 @@ router.get("/add-post", authMiddleware, async (req, res) => {
 
 //POST - ADMIN ADD NEW POST
 
-router.post("/add-post", authMiddleware, async (req, res) => {
+router.post("/add-post", async (req, res) => {
   try {
     try {
       const newPost = new Post({
@@ -138,6 +142,7 @@ router.post("/add-post", authMiddleware, async (req, res) => {
 
       await Post.create(newPost);
       res.redirect("/dashboard");
+      //   res.status(200).json(newPost);
     } catch (error) {
       console.log(error);
     }
@@ -174,8 +179,9 @@ router.put("/edit-post/:id", authMiddleware, async (req, res) => {
       body: req.body.body,
       updatedAt: Date.now(),
     });
-
+    // const data = await Post.findOne({ _id: req.params.id });
     res.redirect(`/edit-post/${req.params.id}`);
+    // res.status(200).json(data);
   } catch (error) {
     console.log(error);
   }
@@ -187,9 +193,20 @@ router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
   try {
     await Post.deleteOne({ _id: req.params.id });
     res.redirect("/dashboard");
+    res.status(200).json("Post has been deleted");
   } catch (error) {
     console.log(error);
   }
+});
+
+// GET - ADMIN LOGOUT
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  //   res.json({ message: "Logout successful." });
+
+  res.redirect("/");
+  res.status(200).json("Admin has been logged out");
 });
 
 //default admin login test
