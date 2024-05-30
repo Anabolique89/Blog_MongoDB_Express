@@ -59,8 +59,6 @@ router.get("/admin", async (req, res) => {
       title: "Admin",
       description: "Admin Login & Command",
     };
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
 
     res.render("admin/index", { locals, layout: adminLayout });
     // res.status(200).json(user);
